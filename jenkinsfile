@@ -8,32 +8,36 @@ pipeline {
 
             steps {
 
-                echo 'Source code checked out from GitHub'
+                checkout scm
 
             }
 
         }
 
-        stage('Build') {
+        stage('Docker Build') {
 
             steps {
 
-                echo 'Application build stage'
+                sh '''
+                    cd backend
+                    docker build -t employee-backend:${BUILD_NUMBER} .
+                '''
 
             }
 
         }
 
-        stage('Test') {
+        stage('Docker Test') {
 
             steps {
 
-                echo 'Application test stage'
+                sh '''
+                    docker images
+                '''
 
             }
 
         }
 
     }
-
 }
