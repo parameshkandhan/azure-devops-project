@@ -53,7 +53,7 @@ function addEmployee() {
     employees.push({
         name: name,
         role: role,
-        empid: empid,
+    
     });
 
     displayEmployees();
